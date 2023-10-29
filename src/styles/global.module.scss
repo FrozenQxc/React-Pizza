@@ -1,0 +1,110 @@
+body {
+	height: 100vh;
+	background-color: #92f195;
+}
+
+buttom {
+	cursor: pointer;
+}
+
+.App {
+	width: 70vw;
+	margin: 10px auto;
+	padding: 0 35px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	background-color: #fff;
+
+	.Header {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 10px;
+
+		.logo {
+			display: flex;
+			gap: 10px;
+
+			img {
+				width: 55px;
+			}
+		}
+
+		h1 {
+			font-size: 24px;
+			color: #181818;
+			font-weight: 800;
+		}
+
+		h2 {
+			font-size: 16px;
+			color: #7b7b7b;
+			font-weight: 400;
+		}
+
+		.basket__button {
+			display: flex;
+			align-items: center;
+			flex-direction: row;
+			background-color: #fe5f1e;
+			padding: 10px;
+			gap: 10px;
+			border-radius: 30px;
+			color: #ffffff;
+			font-size: 16px;
+
+			button {
+				img {
+					width: 22px;
+				}
+
+				font-size: 20px;
+				display: flex;
+				align-items: center;
+				gap: 10px;
+				padding: 10px;
+				color: #ffffff;
+				border: none;
+			}
+		}
+	}
+
+	.sidebar {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: row;
+		gap: 10px;
+
+		margin-top: 20px;
+
+		.categories {
+			font-family: 700;
+			font-size: 16px;
+			padding: 19px 16px;
+
+			.sort {
+				position: relative;
+				&__label {
+					display: flex;
+					align-items: center;
+
+					svg {
+						margin-right: 8px;
+					}
+
+					b {
+						margin-right: 8px;
+					}
+
+					span {
+						color: orange;
+						border-bottom: 1px dashed orange;
+						cursor: pointer;
+					}
+				}
+			}
+		}
+	}
+}
