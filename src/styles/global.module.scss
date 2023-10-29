@@ -3,24 +3,24 @@ body {
 	background-color: #92f195;
 }
 
-buttom {
+button {
 	cursor: pointer;
 }
 
 .App {
 	width: 70vw;
 	margin: 10px auto;
-	padding: 0 35px;
+
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
 	background-color: #fff;
 
 	.Header {
+		padding: 25px 25px 0px 25px;
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		padding: 10px;
 
 		.logo {
 			display: flex;
@@ -71,38 +71,47 @@ buttom {
 	}
 
 	.sidebar {
+		padding: 0 35px;
+		border-top: 1px solid rgb(243, 243, 243);
 		display: flex;
-		justify-content: center;
+		justify-content: space-between;
 		align-items: center;
-		flex-direction: row;
+
 		gap: 10px;
 
 		margin-top: 20px;
 
+		.select {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+
+			select {
+				padding: 6px 0px 6px 9px;
+				font-weight: 500;
+			}
+		}
+
 		.categories {
+			display: flex;
+
 			font-family: 700;
 			font-size: 16px;
 			padding: 19px 16px;
 
-			.sort {
-				position: relative;
-				&__label {
-					display: flex;
-					align-items: center;
+			ul {
+				display: flex;
+				gap: 25px;
 
-					svg {
-						margin-right: 8px;
-					}
-
-					b {
-						margin-right: 8px;
-					}
-
-					span {
-						color: orange;
-						border-bottom: 1px dashed orange;
-						cursor: pointer;
-					}
+				li {
+					font-size: 16px;
+					padding: 20px;
+					font-weight: 700;
+				}
+				li:hover {
+					border-radius: 30px;
+					padding: 20px;
+					background-color: #cbc7c7;
 				}
 			}
 		}
