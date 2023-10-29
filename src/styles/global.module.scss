@@ -8,16 +8,19 @@ button {
 }
 
 .App {
-	width: 70vw;
-	margin: 10px auto;
+	width: calc(100vw - 100px);
+	height: 100%;
+	background-color: #fff;
+	margin: 50px auto;
+	border-radius: 10px;
+	max-width: 1400px;
 
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	background-color: #fff;
 
 	.Header {
-		padding: 25px 25px 0px 25px;
+		padding: 25px 40px 0px 55px;
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
@@ -107,11 +110,91 @@ button {
 					font-size: 16px;
 					padding: 20px;
 					font-weight: 700;
+					border-radius: 30px;
 				}
 				li:hover {
+					font-size: 16px;
+					padding: 20px;
+					font-weight: 700;
+					transition: 0.5s;
 					border-radius: 30px;
 					padding: 20px;
 					background-color: #cbc7c7;
+				}
+			}
+		}
+	}
+
+	.title {
+		padding: 0px 60px;
+		font-size: 22px;
+		font-weight: 600;
+	}
+	.content {
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: flex;
+		-ms-flex-wrap: wrap;
+		flex-wrap: wrap;
+		-webkit-box-pack: justify;
+		-ms-flex-pack: justify;
+		justify-content: space-between;
+
+		.pizza_block {
+			.pizza_card {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				padding: 25px;
+
+				.add {
+					margin-top: 15px;
+					display: flex;
+					align-items: center;
+					gap: 10px;
+
+					button {
+						padding: 10px;
+						border-radius: 20px;
+						font-size: 15px;
+					}
+
+					button:hover {
+						background-color: #e88f8f;
+					}
+				}
+
+				h1 {
+					color: #000000;
+					font-size: 20px;
+					font-weight: 800;
+				}
+
+				.select_block {
+					margin-top: 10px;
+					padding: 10px;
+					background-color: #f3f3f3;
+					border-radius: 20px;
+
+					s ul:first-of-type {
+						margin-bottom: 6px;
+					}
+					ul {
+						display: flex;
+
+						li {
+							font-size: 16px;
+							padding: 10px 15px 10px 15px;
+							cursor: pointer;
+							font-weight: 600;
+							font-size: 14px;
+						}
+
+						.active {
+							background-color: #ffffff;
+							border-radius: 5px;
+						}
+					}
 				}
 			}
 		}
