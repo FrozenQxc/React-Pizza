@@ -1,5 +1,4 @@
 body {
-	height: 100vh;
 	background-color: #92f195;
 }
 
@@ -73,79 +72,26 @@ button {
 		}
 	}
 
-	.sidebar {
-		padding: 0 35px;
-		border-top: 1px solid rgb(243, 243, 243);
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-
-		gap: 10px;
-
-		margin-top: 20px;
-
-		.select {
-			display: flex;
-			align-items: center;
-			gap: 10px;
-
-			select {
-				padding: 6px 0px 6px 9px;
-				font-weight: 500;
-			}
-		}
-
-		.categories {
-			display: flex;
-
-			font-family: 700;
-			font-size: 16px;
-			padding: 19px 16px;
-
-			ul {
-				display: flex;
-				gap: 25px;
-
-				li {
-					font-size: 16px;
-					padding: 20px;
-					font-weight: 700;
-					border-radius: 30px;
-				}
-				li:hover {
-					font-size: 16px;
-					padding: 20px;
-					font-weight: 700;
-					transition: 0.5s;
-					border-radius: 30px;
-					padding: 20px;
-					background-color: #cbc7c7;
-				}
-			}
-		}
-	}
-
 	.title {
+		margin-top: 0;
 		padding: 0px 60px;
-		font-size: 22px;
+		font-size: 15px;
 		font-weight: 600;
 	}
+
 	.content {
-		display: -webkit-box;
-		display: -ms-flexbox;
 		display: flex;
-		-ms-flex-wrap: wrap;
 		flex-wrap: wrap;
-		-webkit-box-pack: justify;
-		-ms-flex-pack: justify;
 		justify-content: space-between;
+		height: 88vh;
 
 		.pizza_block {
+			margin-top: 10px;
 			.pizza_card {
 				display: flex;
 				flex-direction: column;
 				align-items: center;
-				padding: 25px;
+				padding: 15px;
 
 				.add {
 					margin-top: 15px;
@@ -157,6 +103,7 @@ button {
 						padding: 10px;
 						border-radius: 20px;
 						font-size: 15px;
+						border: #000000 solid 1px;
 					}
 
 					button:hover {
@@ -176,18 +123,17 @@ button {
 					background-color: #f3f3f3;
 					border-radius: 20px;
 
-					s ul:first-of-type {
-						margin-bottom: 6px;
-					}
 					ul {
+						padding: 5px;
 						display: flex;
 
 						li {
 							font-size: 16px;
 							padding: 10px 15px 10px 15px;
 							cursor: pointer;
-							font-weight: 600;
+
 							font-size: 14px;
+							color: #2c2c2c;
 						}
 
 						.active {
