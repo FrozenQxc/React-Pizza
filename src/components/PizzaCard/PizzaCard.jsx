@@ -1,10 +1,9 @@
-import { PropTypes } from 'prop-types'
+import PropTypes from 'prop-types'
 import { useState } from 'react'
 import style from '../../styles/global.module.scss'
 
-const PizzaCard = ({ title, image, price, size, type }) => {
+const PizzaCard = ({ title, image, price, type, size }) => {
 	const [count, setCount] = useState(1)
-
 	const [activeIndex, setActiveIndex] = useState(0)
 	const [activeSizeIndex, setActiveSizeIndex] = useState(0)
 
@@ -12,7 +11,7 @@ const PizzaCard = ({ title, image, price, size, type }) => {
 		if (count < 10) {
 			setCount(count + 1)
 		} else {
-			alert('Вы привысили значение!')
+			alert('Вы превысили значение!')
 		}
 	}
 
@@ -21,31 +20,35 @@ const PizzaCard = ({ title, image, price, size, type }) => {
 	return (
 		<div className={style.pizza_block}>
 			<div className={style.pizza_card}>
-				<img src={image} />
+				<img src={image} alt={title} />
 				<h1>{title}</h1>
 				<div className={style.select_block}>
-					<ul>
-						{type.map((typeIndex, index) => (
-							<li
-								key={typeIndex}
-								onClick={() => setActiveIndex(index)}
-								className={activeIndex === index ? style.active : ''}
-							>
-								{typeName[typeIndex]}
-							</li>
-						))}
-					</ul>
-					<ul>
-						{size.map((size, index) => (
-							<li
-								onClick={() => setActiveSizeIndex(index)}
-								className={activeSizeIndex === index ? style.active : ''}
-								key={index}
-							>
-								{size} см.
-							</li>
-						))}
-					</ul>
+					{type && type.length > 0 && (
+						<ul>
+							{type.map((typeIndex, index) => (
+								<li
+									key={index}
+									onClick={() => setActiveIndex(index)}
+									className={activeIndex === index ? style.active : ''}
+								>
+									{typeName[typeIndex]}
+								</li>
+							))}
+						</ul>
+					)}
+					{size && size.length > 0 && (
+						<ul>
+							{size.map((size, index) => (
+								<li
+									onClick={() => setActiveSizeIndex(index)}
+									className={activeSizeIndex === index ? style.active : ''}
+									key={index}
+								>
+									{size} см.
+								</li>
+							))}
+						</ul>
+					)}
 				</div>
 				<div className={style.add}>
 					<label htmlFor=''>{price} ₽</label>
