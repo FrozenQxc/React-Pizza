@@ -21,7 +21,7 @@ const PizzaCard = ({ title, image, price, type, size }) => {
 		<div className={style.pizza_block}>
 			<div className={style.pizza_card}>
 				<img src={image} alt={title} />
-				<h1>{title}</h1>
+				<p>{title}</p>
 				<div className={style.select_block}>
 					{type && type.length > 0 && (
 						<ul>

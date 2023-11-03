@@ -1,21 +1,34 @@
-import { PropTypes } from 'prop-types'
+import { useEffect, useState } from 'react'
 import style from '../../styles/global.module.scss'
-import PizzaCard from '../PizzaCard/PizzaCard'
+import Skeleton from '../PizzaCard/Skeleton'
+import PizzaCard from './../PizzaCard/'
 
-const Content = ({ items }) => {
+const Content = () => {
+	const [items, setItems] = useState([])
+	const [isLoading, setIsLoading] = useState(true)
+
+	useEffect(() => {
+		fetch('https://6540affb45bedb25bfc2594d.mockapi.io/items')
+			.then(res => res.json())
+			.then(json => {
+				setItems(json)
+				setIsLoading(false)
+			})
+		window.scrollTo(0, 0)
+	}, [])
+
 	return (
 		<div className={style.title}>
 			<h1>Все пиццы</h1>
 			<div className={style.content}>
-				{items.map(obj => (
-					<PizzaCard {...obj} image={obj.imgUrl} key={obj.id} />
-				))}
+				{isLoading
+					? [...new Array(4)].map((_, index) => <Skeleton key={index} />)
+					: items.map(obj => (
+							<PizzaCard key={obj.id} {...obj} image={obj.imgUrl} />
+					  ))}
 			</div>
 		</div>
 	)
-}
-Content.propTypes = {
-	items: PropTypes.arrayOf(PropTypes.object),
 }
 
 export default Content
