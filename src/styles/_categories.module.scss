@@ -10,39 +10,38 @@
 	.select {
 		position: relative;
 
+		.popup {
+			position: absolute;
+			right: 0;
+			margin-top: 15px;
+			background: #ffffff;
+			box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.09);
+			border-radius: 10px;
+			overflow: hidden;
+
+			span {
+				display: flex;
+				background-color: #ffffff;
+				cursor: pointer;
+				padding: 10px;
+			}
+
+			:hover {
+				color: #ff9d00;
+				background-color: #faac3052;
+				cursor: pointer;
+			}
+
+			.active {
+				color: #ff9d00;
+				background-color: #faac3052;
+				cursor: pointer;
+			}
+		}
 		.title {
 			cursor: pointer;
 			color: orange;
 			border-bottom: 1px dashed orange;
-
-			.popup {
-				position: absolute;
-				right: 0;
-				margin-top: 15px;
-				background: #ffffff;
-				box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.09);
-				border-radius: 10px;
-				overflow: hidden;
-
-				span {
-					display: flex;
-					background-color: #ffffff;
-					cursor: pointer;
-					padding: 10px;
-				}
-
-				:hover {
-					color: #ff9d00;
-					background-color: #faac3052;
-					cursor: pointer;
-				}
-
-				.active {
-					color: #ff9d00;
-					background-color: #faac3052;
-					cursor: pointer;
-				}
-			}
 		}
 	}
 

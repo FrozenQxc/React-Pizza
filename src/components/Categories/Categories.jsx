@@ -1,12 +1,18 @@
+import { PropTypes } from 'prop-types'
 import { useState } from 'react'
 import style from '../../styles/_categories.module.scss'
 
-const Categories = () => {
-	const [activeIndex, setActiveIndex] = useState(0)
+const Categories = ({ value, sortValue, onClickCategory, onClickSort }) => {
 	const [openSelect, setOpenSelect] = useState(false)
-	const [selectName, setSelectName] = useState(0)
 
-	const list = ['Популярности', 'Цене', 'Алфавиту']
+	const list = [
+		{ name: 'Популярности(DESC)', sortProperty: 'rating' },
+		{ name: 'Популярности(ASC)', sortProperty: '-rating' },
+		{ name: 'Цене(DESC)', sortProperty: 'price' },
+		{ name: 'Цене(ASC)', sortProperty: '-price' },
+		{ name: 'Алфавиту(DESC)', sortProperty: 'title' },
+		{ name: 'Алфавиту(ASC)', sortProperty: '-title' },
+	]
 
 	const categories = [
 		'Все',
@@ -18,7 +24,7 @@ const Categories = () => {
 	]
 
 	const onClickList = index => {
-		setSelectName(index)
+		onClickSort(index)
 		setOpenSelect(false)
 	}
 
@@ -26,13 +32,13 @@ const Categories = () => {
 		<div className={style.menu}>
 			<div className={style.categories}>
 				<ul>
-					{categories.map((category, index) => (
+					{categories.map((categoryName, index) => (
 						<li
 							key={index}
-							onClick={() => setActiveIndex(index)}
-							className={activeIndex === index ? style.active : ''}
+							onClick={() => onClickCategory(index)}
+							className={value === index ? style.active : ''}
 						>
-							{category}
+							{categoryName}
 						</li>
 					))}
 				</ul>
@@ -44,18 +50,22 @@ const Categories = () => {
 					className={style.title}
 					onClick={() => setOpenSelect(!openSelect)}
 				>
-					{list[selectName]}
+					{sortValue.name}
 				</span>
 
 				{openSelect && (
 					<div className={style.popup}>
-						{list.map((name, index) => (
+						{list.map((obj, index) => (
 							<span
 								key={index}
-								onClick={() => onClickList(index)}
-								className={selectName === index ? style.active : ''}
+								onClick={() => onClickList(obj)}
+								className={
+									sortValue.sortProperty === obj.sortProperty
+										? style.active
+										: ''
+								}
 							>
-								{name}
+								{obj.name}
 							</span>
 						))}
 					</div>
@@ -64,5 +74,10 @@ const Categories = () => {
 		</div>
 	)
 }
-
+Categories.propTypes = {
+	value: PropTypes.number,
+	sortValue: PropTypes.object,
+	onClickSort: PropTypes.func,
+	onClickCategory: PropTypes.func,
+}
 export default Categories

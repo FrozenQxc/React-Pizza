@@ -1,22 +1,9 @@
-import { useEffect, useState } from 'react'
+import { PropTypes } from 'prop-types'
 import style from '../../styles/global.module.scss'
 import Skeleton from '../PizzaCard/Skeleton'
 import PizzaCard from './../PizzaCard/'
 
-const Content = () => {
-	const [items, setItems] = useState([])
-	const [isLoading, setIsLoading] = useState(true)
-
-	useEffect(() => {
-		fetch('https://6540affb45bedb25bfc2594d.mockapi.io/items')
-			.then(res => res.json())
-			.then(json => {
-				setItems(json)
-				setIsLoading(false)
-			})
-		window.scrollTo(0, 0)
-	}, [])
-
+const Content = ({ isLoading, items }) => {
 	return (
 		<div className={style.title}>
 			<h1>Все пиццы</h1>
@@ -29,6 +16,11 @@ const Content = () => {
 			</div>
 		</div>
 	)
+}
+
+Content.propTypes = {
+	isLoading: PropTypes.bool,
+	items: PropTypes.arrayOf(PropTypes.object),
 }
 
 export default Content
