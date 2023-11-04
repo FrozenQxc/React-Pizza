@@ -22,7 +22,7 @@ const Home = () => {
 		const category = categoryId > 0 ? `category=${categoryId}` : '' // если категория больше нуля выводы Id категории если меньше нуля то возвращай пустую строку
 
 		fetch(
-			`https://6540affb45bedb25bfc2594d.mockapi.io/items?${category}}&sortBy=${sortBy}&order=${order}`
+			`https://6540affb45bedb25bfc2594d.mockapi.io/items?${category}&sortBy=${sortBy}&order=${order}`
 		)
 			.then(res => res.json())
 			.then(json => {
