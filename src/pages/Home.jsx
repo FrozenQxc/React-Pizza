@@ -1,14 +1,16 @@
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import Content from '../components/Content/Content'
 import Categories from './../components/Categories/Categories'
 import Header from './../components/Header/Header'
 import Pagination from './../components/Pagination/'
 
+export const SearchContext = React.createContext()
+
 const Home = () => {
 	const [items, setItems] = useState([])
 	const [currentPage, setCurrentPage] = useState(1)
-	const [inputValue, setInputValue] = useState('')
+	const [searchValue, setSearchValue] = useState('')
 	const [isLoading, setIsLoading] = useState(true)
 	const [categoryId, setCategoryId] = useState(0)
 	const [sortType, setSortType] = useState({
@@ -25,7 +27,7 @@ const Home = () => {
 
 		const category = categoryId > 0 ? `&category=${categoryId}` : '' // если категория больше нуля выводы Id категории если меньше нуля то возвращай пустую строку
 
-		const search = inputValue ? `&search=${inputValue}` : ''
+		const search = searchValue ? `&search=${searchValue}` : ''
 
 		fetch(
 			`https://6540affb45bedb25bfc2594d.mockapi.io/items?page=${currentPage}&limit=4&${category}&sortBy=${sortBy}&order=${order}${search}`
@@ -36,20 +38,20 @@ const Home = () => {
 				setIsLoading(false)
 			})
 		window.scrollTo(0, 0)
-	}, [categoryId, sortType, inputValue, currentPage])
+	}, [categoryId, sortType, searchValue, currentPage])
 
 	return (
-		<>
-			<Header inputValue={inputValue} setInputValue={setInputValue} />
+		<SearchContext.Provider value={{ searchValue, setSearchValue }}>
+			<Header />
 			<Categories
 				value={categoryId}
 				onClickCategory={i => setCategoryId(i)}
 				sortValue={sortType}
 				onClickSort={i => setSortType(i)}
 			/>
-			<Content isLoading={isLoading} items={items} inputValue={inputValue} />
+			<Content isLoading={isLoading} items={items} />
 			<Pagination onChangePage={number => setCurrentPage(number)} />
-		</>
+		</SearchContext.Provider>
 	)
 }
 

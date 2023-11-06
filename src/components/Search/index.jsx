@@ -1,19 +1,22 @@
 import { PropTypes } from 'prop-types'
+import React from 'react'
+import { SearchContext } from './../../pages/Home'
 import style from './search.module.scss'
 
-const Search = ({ setInputValue, inputValue }) => {
+const Search = () => {
+	const { searchValue, setSearchValue } = React.useContext(SearchContext)
 	return (
 		<div className={style.root}>
 			<img className={style.lupa} src='lupa.svg' alt='' />
 			<input
-				value={inputValue}
-				onChange={event => setInputValue(event.target.value)}
+				value={searchValue}
+				onChange={event => setSearchValue(event.target.value)}
 				type='text'
 				placeholder='Поиск пиццы...'
 			/>
-			{inputValue && (
+			{searchValue && (
 				<img
-					onClick={() => setInputValue('')}
+					onClick={() => setSearchValue('')}
 					className={style.close}
 					src='close.svg'
 					alt=''
@@ -24,8 +27,8 @@ const Search = ({ setInputValue, inputValue }) => {
 }
 
 Search.propTypes = {
-	setInputValue: PropTypes.func,
-	inputValue: PropTypes.string,
+	setSearchValue: PropTypes.func,
+	searchValue: PropTypes.string,
 }
 
 export default Search
