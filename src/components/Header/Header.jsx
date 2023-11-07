@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import style from '../../styles/global.module.scss'
-import Search from '../Search'
+import Search from './../Search/index'
 import Button from './Button'
 
 const Header = () => {
