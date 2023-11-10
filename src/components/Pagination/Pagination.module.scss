@@ -1,4 +1,8 @@
 .root {
+	display: flex;
+	position: sticky;
+	justify-content: center;
+	margin: 15px;
 	li {
 		display: inline-block;
 

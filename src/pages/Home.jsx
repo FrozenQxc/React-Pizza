@@ -2,9 +2,14 @@ import React, { useEffect, useState } from 'react'
 
 // useSelector отвечает за вытаскивание данных
 // useDispatch отвечает за действие
+import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux'
 import Content from '../components/Content/Content'
-import { decrement, increment } from '../redux/slices/filterSlice.js'
+import {
+	setCategoryId,
+	setPageCount,
+	setSortType,
+} from '../redux/slices/filterSilce.js'
 import Categories from './../components/Categories/Categories'
 import Header from './../components/Header/Header'
 import Pagination from './../components/Pagination/'
@@ -13,17 +18,25 @@ export const SearchContext = React.createContext()
 
 const Home = () => {
 	const dispatch = useDispatch()
-	const count = useSelector(state => state.counter.value)
+	const categoryId = useSelector(state => state.filter.categoryId)
+	const sortType = useSelector(state => state.filter.sort)
+	const pageCount = useSelector(state => state.filter.pageCount)
 
 	const [items, setItems] = useState([])
-	const [currentPage, setCurrentPage] = useState(1)
 	const [searchValue, setSearchValue] = useState('')
 	const [isLoading, setIsLoading] = useState(true)
-	const [categoryId, setCategoryId] = useState(0)
-	const [sortType, setSortType] = useState({
-		name: 'популярности',
-		sortProperty: 'rating',
-	})
+
+	const onChangeCategory = id => {
+		dispatch(setCategoryId(id))
+	}
+
+	const onChangeSort = id => {
+		dispatch(setSortType(id))
+	}
+
+	const onChangePage = number => {
+		dispatch(setPageCount(number))
+	}
 
 	useEffect(() => {
 		setIsLoading(true)
@@ -36,43 +49,38 @@ const Home = () => {
 
 		const search = searchValue ? `&search=${searchValue}` : ''
 
-		fetch(
-			`https://6540affb45bedb25bfc2594d.mockapi.io/items?page=${currentPage}&limit=4&${category}&sortBy=${sortBy}&order=${order}${search}`
-		)
-			.then(res => res.json())
-			.then(json => {
-				setItems(json)
+		axios
+			.get(
+				`https://6540affb45bedb25bfc2594d.mockapi.io/items?page=${pageCount}&limit=4&${category}&sortBy=${sortBy}&order=${order}${search}`
+			)
+			.then(res => {
+				setItems(res.data)
 				setIsLoading(false)
 			})
+
+		// fetch(
+		// 	`https://6540affb45bedb25bfc2594d.mockapi.io/items?page=${currentPage}&limit=4&${category}&sortBy=${sortBy}&order=${order}${search}`
+		// )
+		// 	.then(res => res.json())
+		// 	.then(json => {
+		// 		setItems(json)
+		// 		setIsLoading(false)
+		// 	})
 		window.scrollTo(0, 0)
-	}, [categoryId, sortType, searchValue, currentPage])
+	}, [categoryId, sortType, searchValue, pageCount])
 
 	return (
 		<SearchContext.Provider value={{ searchValue, setSearchValue }}>
 			<Header />
 			<Categories
 				value={categoryId}
-				onClickCategory={i => setCategoryId(i)}
+				onClickCategory={onChangeCategory}
 				sortValue={sortType}
-				onClickSort={i => setSortType(i)}
+				onClickSort={onChangeSort}
 			/>
-			<div>
-				<button
-					aria-label='Increment value'
-					onClick={() => dispatch(increment())}
-				>
-					Increment
-				</button>
-				<span>{count}</span>
-				<button
-					aria-label='Decrement value'
-					onClick={() => dispatch(decrement())}
-				>
-					Decrement
-				</button>
-			</div>
+
 			<Content isLoading={isLoading} items={items} />
-			<Pagination onChangePage={number => setCurrentPage(number)} />
+			<Pagination value={pageCount} onChangePage={onChangePage} />
 		</SearchContext.Provider>
 	)
 }

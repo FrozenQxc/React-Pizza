@@ -2,17 +2,17 @@ import { PropTypes } from 'prop-types'
 import { useState } from 'react'
 import style from '../../styles/_categories.module.scss'
 
+const list = [
+	{ name: 'Популярности(DESC)', sortProperty: 'rating' },
+	{ name: 'Популярности(ASC)', sortProperty: '-rating' },
+	{ name: 'Цене(DESC)', sortProperty: 'price' },
+	{ name: 'Цене(ASC)', sortProperty: '-price' },
+	{ name: 'Алфавиту(DESC)', sortProperty: 'title' },
+	{ name: 'Алфавиту(ASC)', sortProperty: '-title' },
+]
+
 const Categories = ({ value, sortValue, onClickCategory, onClickSort }) => {
 	const [openSelect, setOpenSelect] = useState(false)
-
-	const list = [
-		{ name: 'Популярности(DESC)', sortProperty: 'rating' },
-		{ name: 'Популярности(ASC)', sortProperty: '-rating' },
-		{ name: 'Цене(DESC)', sortProperty: 'price' },
-		{ name: 'Цене(ASC)', sortProperty: '-price' },
-		{ name: 'Алфавиту(DESC)', sortProperty: 'title' },
-		{ name: 'Алфавиту(ASC)', sortProperty: '-title' },
-	]
 
 	const categories = [
 		'Все',
