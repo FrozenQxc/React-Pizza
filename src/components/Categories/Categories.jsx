@@ -2,7 +2,7 @@ import { PropTypes } from 'prop-types'
 import { useState } from 'react'
 import style from '../../styles/_categories.module.scss'
 
-const list = [
+export const sortList = [
 	{ name: 'Популярности(DESC)', sortProperty: 'rating' },
 	{ name: 'Популярности(ASC)', sortProperty: '-rating' },
 	{ name: 'Цене(DESC)', sortProperty: 'price' },
@@ -55,7 +55,7 @@ const Categories = ({ value, sortValue, onClickCategory, onClickSort }) => {
 
 				{openSelect && (
 					<div className={style.popup}>
-						{list.map((obj, index) => (
+						{sortList.map((obj, index) => (
 							<span
 								key={index}
 								onClick={() => onClickList(obj)}

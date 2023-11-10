@@ -23,9 +23,15 @@ const filterSlice = createSlice({
 		setPageCount(state, action) {
 			state.pageCount = action.payload
 		},
+		setFilters(state, action) {
+			state.sort = action.payload.sort
+			state.categoryId = Number(action.payload.categoryId)
+			state.currentPage = Number(action.payload.currentPage)
+		},
 	},
 })
 
-export const { setCategoryId, setSortType, setPageCount } = filterSlice.actions
+export const { setCategoryId, setSortType, setPageCount, setFilters } =
+	filterSlice.actions
 
 export default filterSlice.reducer
