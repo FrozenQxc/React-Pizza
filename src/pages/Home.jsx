@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 // useSelector отвечает за вытаскивание данных
 // useDispatch отвечает за действие
@@ -12,24 +12,24 @@ import {
 	setFilters,
 	setPageCount,
 	setSortType,
-} from '../redux/slices/filterSilce.js'
+} from '../redux/slices/filterSlice.js'
 import Categories, { sortList } from './../components/Categories/Categories'
 import Header from './../components/Header/Header'
 import Pagination from './../components/Pagination/'
 
-export const SearchContext = React.createContext()
+// export const SearchContext = React.createContext()
 
 const Home = () => {
 	const navigate = useNavigate()
 	const dispatch = useDispatch()
 	const isSearch = useRef(false)
 	const isMounted = useRef(false)
-	const categoryId = useSelector(state => state.filter.categoryId)
-	const sort = useSelector(state => state.filter.sort)
-	const pageCount = useSelector(state => state.filter.pageCount)
+	const { categoryId, sort, pageCount, searchValue } = useSelector(
+		state => state.filter
+	)
 
 	const [items, setItems] = useState([])
-	const [searchValue, setSearchValue] = useState('')
+
 	const [isLoading, setIsLoading] = useState(true)
 
 	// Если был первый рендер, то проверяем URl-параметры и сохраняем в редуксе
@@ -83,7 +83,7 @@ const Home = () => {
 
 		const sortBy = sort.sortProperty.replace('-', '') // если в сорте есть минус замени его на пустую строку
 
-		const category = categoryId > 0 ? `&category=${categoryId}` : '' // если категория больше нуля выводы Id категории если меньше нуля то возвращай пустую строку
+		const category = categoryId > 0 ? `&category=${categoryId}` : '' // если категория больше нуля выводи Id категории если меньше нуля то возвращай пустую строку
 
 		const search = searchValue ? `&search=${searchValue}` : ''
 
@@ -110,7 +110,7 @@ const Home = () => {
 	}
 
 	return (
-		<SearchContext.Provider value={{ searchValue, setSearchValue }}>
+		<>
 			<Header />
 			<Categories
 				value={categoryId}
@@ -121,7 +121,7 @@ const Home = () => {
 
 			<Content isLoading={isLoading} items={items} />
 			<Pagination value={pageCount} onChangePage={onChangePage} />
-		</SearchContext.Provider>
+		</>
 	)
 }
 

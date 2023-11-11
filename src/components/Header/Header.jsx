@@ -1,9 +1,15 @@
+import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import style from '../../styles/global.module.scss'
 import Search from './../Search/index'
-import Button from './Button'
 
 const Header = () => {
+	const { items, totalPrice } = useSelector(state => state.cart)
+
+	const totalCount = items.reduce((sum, item) => sum + item.count, 0)
+
+	const dispatch = useDispatch()
+
 	return (
 		<div className={style.Header}>
 			<Link to='/'>
@@ -17,8 +23,16 @@ const Header = () => {
 				</div>
 			</Link>
 			<Search />
-
-			<Button />
+			<div className={style.basket__button}>
+				<Link to='/cart'>
+					<button>
+						<label htmlFor=''>{totalPrice} ₽</label>
+						<img src='busket.svg' alt='' />
+						<span>{totalCount}</span>
+					</button>
+				</Link>
+			</div>
+			{/* <Button /> */}
 		</div>
 	)
 }

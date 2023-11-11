@@ -1,5 +1,5 @@
 import { PropTypes } from 'prop-types'
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import style from '../../styles/_categories.module.scss'
 
 export const sortList = [
@@ -13,6 +13,22 @@ export const sortList = [
 
 const Categories = ({ value, sortValue, onClickCategory, onClickSort }) => {
 	const [openSelect, setOpenSelect] = useState(false)
+
+	const sortRef = useRef()
+
+	useEffect(() => {
+		const handleClickOutside = event => {
+			const path = event.composedPath()
+
+			if (!path.includes(sortRef.current)) {
+				setOpenSelect(false)
+			}
+		}
+		document.body.addEventListener('click', handleClickOutside)
+		return () => {
+			document.body.removeEventListener('click', handleClickOutside)
+		}
+	}, [])
 
 	const categories = [
 		'Все',
@@ -44,7 +60,7 @@ const Categories = ({ value, sortValue, onClickCategory, onClickSort }) => {
 				</ul>
 			</div>
 
-			<div className={style.select}>
+			<div ref={sortRef} className={style.select}>
 				<b htmlFor=''>Сортировка по: </b>
 				<span
 					className={style.title}

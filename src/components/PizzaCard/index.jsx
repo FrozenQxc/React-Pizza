@@ -1,21 +1,43 @@
 import PropTypes from 'prop-types'
 import { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { addItem } from '../../redux/slices/cartSlice'
 import style from '../../styles/global.module.scss'
 
-const PizzaCard = ({ title, image, price, type, size }) => {
-	const [count, setCount] = useState(1)
+const typeName = ['Тонкое', 'Традиционное']
+
+const PizzaCard = ({ id, title, image, price, type, size }) => {
+	const [count, setCount] = useState(0)
+	const cartItem = useSelector(state =>
+		state.cart.items.find(obj => obj.id === id)
+	)
 	const [activeIndex, setActiveIndex] = useState(0)
 	const [activeSizeIndex, setActiveSizeIndex] = useState(0)
+	const dispatch = useDispatch()
+
+	const addedCount = cartItem ? cartItem.count : 0
+
+	const onClickAdd = () => {
+		const item = {
+			id,
+			title,
+			price,
+			image,
+			type: typeName[activeIndex],
+			size: size[activeSizeIndex],
+		}
+		dispatch(addItem(item))
+	}
 
 	const handleDecrement = () => {
+		onClickAdd()
+
 		if (count < 10) {
 			setCount(count + 1)
 		} else {
 			alert('Вы превысили значение!')
 		}
 	}
-
-	const typeName = ['Тонкое', 'Традиционное']
 
 	return (
 		<div className={style.pizza_block}>
@@ -53,7 +75,7 @@ const PizzaCard = ({ title, image, price, type, size }) => {
 				<div className={style.add}>
 					<label htmlFor=''>{price} ₽</label>
 					<button onClick={handleDecrement}>
-						Добавить <label htmlFor=''>{count}</label>
+						Добавить {addedCount > 0 && <label htmlFor=''>{addedCount}</label>}
 					</button>
 				</div>
 			</div>
@@ -62,6 +84,7 @@ const PizzaCard = ({ title, image, price, type, size }) => {
 }
 
 PizzaCard.propTypes = {
+	id: PropTypes.number,
 	title: PropTypes.string,
 	image: PropTypes.string,
 	price: PropTypes.number,

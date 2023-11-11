@@ -5,6 +5,8 @@ import Skeleton from '../PizzaCard/Skeleton'
 import PizzaCard from './../PizzaCard/'
 
 const Content = ({ isLoading, items }) => {
+	console.log(isLoading)
+
 	if (items.length === 0) {
 		return (
 			<div className={styles.block}>
