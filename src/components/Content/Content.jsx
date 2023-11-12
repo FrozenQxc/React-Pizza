@@ -1,13 +1,14 @@
 import { PropTypes } from 'prop-types'
+import { useSelector } from 'react-redux'
 import styles from '../../styles/_NotFound.module.scss'
 import style from '../../styles/global.module.scss'
 import Skeleton from '../PizzaCard/Skeleton'
 import PizzaCard from './../PizzaCard/'
 
-const Content = ({ isLoading, items }) => {
-	console.log(isLoading)
-
-	if (items.length === 0) {
+const Content = ({ status }) => {
+	const { items } = useSelector(state => state.pizza)
+	console.log('массив пустует', items)
+	if (!items || items.length === 0) {
 		return (
 			<div className={styles.block}>
 				<h1>Пиццы не найдены🍕</h1>
@@ -40,14 +41,15 @@ const Content = ({ isLoading, items }) => {
 	return (
 		<div className={style.title}>
 			<h1>Все пиццы</h1>
-			<div className={style.content}>{isLoading ? skeleton : pizza}</div>
+			<div className={style.content}>
+				{status === 'loading' ? skeleton : pizza}
+			</div>
 		</div>
 	)
 }
 
 Content.propTypes = {
-	isLoading: PropTypes.bool,
-	items: PropTypes.arrayOf(PropTypes.object),
+	status: PropTypes.string,
 }
 
 export default Content

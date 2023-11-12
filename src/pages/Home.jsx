@@ -1,8 +1,7 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 
 // useSelector отвечает за вытаскивание данных
 // useDispatch отвечает за действие
-import axios from 'axios'
 import qs from 'qs'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
@@ -13,11 +12,11 @@ import {
 	setPageCount,
 	setSortType,
 } from '../redux/slices/filterSlice.js'
+
+import { fetchPizza } from '../redux/slices/pizzaSlice.js'
 import Categories, { sortList } from './../components/Categories/Categories'
 import Header from './../components/Header/Header'
 import Pagination from './../components/Pagination/'
-
-// export const SearchContext = React.createContext()
 
 const Home = () => {
 	const navigate = useNavigate()
@@ -28,11 +27,8 @@ const Home = () => {
 		state => state.filter
 	)
 
-	const [items, setItems] = useState([])
+	const { status } = useSelector(state => state.pizza)
 
-	const [isLoading, setIsLoading] = useState(true)
-
-	// Если был первый рендер, то проверяем URl-параметры и сохраняем в редуксе
 	useEffect(() => {
 		if (window.location.search) {
 			const params = qs.parse(window.location.search.substring(1))
@@ -45,7 +41,6 @@ const Home = () => {
 		}
 	}, [])
 
-	// Если изменили параметры и был первый рендер
 	useEffect(() => {
 		if (isMounted.current) {
 			const queryString = qs.stringify({
@@ -56,45 +51,33 @@ const Home = () => {
 			navigate(`?${queryString}`)
 		}
 		isMounted.current = true
-	}, [categoryId, sort.sortProperty, searchValue, pageCount])
+	}, [categoryId, sort.sortProperty, searchValue, pageCount, navigate])
 
-	// Если был первый рендер, то запрашиваем пиццы
 	useEffect(() => {
 		if (!isSearch.current) {
-			fetchPizza()
+			getPizza()
 		}
 
 		isSearch.current = false
-		// fetch(
-		// 	`https://6540affb45bedb25bfc2594d.mockapi.io/items?page=${currentPage}&limit=4&${category}&sortBy=${sortBy}&order=${order}${search}`
-		// )
-		// 	.then(res => res.json())
-		// 	.then(json => {
-		// 		setItems(json)
-		// 		setIsLoading(false)
-		// 	})
+
 		window.scrollTo(0, 0)
 	}, [categoryId, sort, searchValue, pageCount])
 
-	const fetchPizza = () => {
-		setIsLoading(true)
-
-		const order = sort.sortProperty.includes('-') ? 'asc' : 'desc' // если в сорте есть минус добавляй asc если нет делай desc
-
-		const sortBy = sort.sortProperty.replace('-', '') // если в сорте есть минус замени его на пустую строку
-
-		const category = categoryId > 0 ? `&category=${categoryId}` : '' // если категория больше нуля выводи Id категории если меньше нуля то возвращай пустую строку
-
+	const getPizza = async () => {
+		const order = sort.sortProperty.includes('-') ? 'asc' : 'desc'
+		const sortBy = sort.sortProperty.replace('-', '')
+		const category = categoryId > 0 ? `&category=${categoryId}` : ''
 		const search = searchValue ? `&search=${searchValue}` : ''
 
-		axios
-			.get(
-				`https://6540affb45bedb25bfc2594d.mockapi.io/items?page=${pageCount}&limit=4&${category}&sortBy=${sortBy}&order=${order}${search}`
-			)
-			.then(res => {
-				setItems(res.data)
-				setIsLoading(false)
+		dispatch(
+			fetchPizza({
+				order,
+				sortBy,
+				category,
+				search,
+				pageCount,
 			})
+		)
 	}
 
 	const onChangeCategory = id => {
@@ -119,7 +102,7 @@ const Home = () => {
 				onClickSort={onChangeSort}
 			/>
 
-			<Content isLoading={isLoading} items={items} />
+			<Content status={status} />
 			<Pagination value={pageCount} onChangePage={onChangePage} />
 		</>
 	)
