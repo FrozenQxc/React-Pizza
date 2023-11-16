@@ -7,7 +7,7 @@ import PizzaCard from './../PizzaCard/'
 
 const Content = ({ status }) => {
 	const { items } = useSelector(state => state.pizza)
-	console.log('массив пустует', items)
+
 	if (!items || items.length === 0) {
 		return (
 			<div className={styles.block}>
@@ -24,7 +24,7 @@ const Content = ({ status }) => {
 	// })
 
 	const pizza = items.map(obj => (
-		<PizzaCard key={obj.id} {...obj} image={obj.imgUrl} />
+		<PizzaCard {...obj} key={obj.id} image={obj.imgUrl} />
 	))
 
 	// if (inputValue.length === 0) {

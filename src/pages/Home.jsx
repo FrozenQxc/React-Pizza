@@ -7,13 +7,14 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import Content from '../components/Content/Content'
 import {
+	selectFilter,
 	setCategoryId,
 	setFilters,
 	setPageCount,
 	setSortType,
 } from '../redux/slices/filterSlice.js'
 
-import { fetchPizza } from '../redux/slices/pizzaSlice.js'
+import { fetchPizza, selectStatus } from '../redux/slices/pizzaSlice.js'
 import Categories, { sortList } from './../components/Categories/Categories'
 import Header from './../components/Header/Header'
 import Pagination from './../components/Pagination/'
@@ -23,11 +24,9 @@ const Home = () => {
 	const dispatch = useDispatch()
 	const isSearch = useRef(false)
 	const isMounted = useRef(false)
-	const { categoryId, sort, pageCount, searchValue } = useSelector(
-		state => state.filter
-	)
+	const { categoryId, sort, pageCount, searchValue } = useSelector(selectFilter)
 
-	const { status } = useSelector(state => state.pizza)
+	const { status } = useSelector(selectStatus)
 
 	useEffect(() => {
 		if (window.location.search) {

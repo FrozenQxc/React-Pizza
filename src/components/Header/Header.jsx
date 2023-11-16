@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import style from '../../styles/global.module.scss'
 import Search from './../Search/index'
 
@@ -9,6 +9,8 @@ const Header = () => {
 	const totalCount = items.reduce((sum, item) => sum + item.count, 0)
 
 	const dispatch = useDispatch()
+
+	const location = useLocation()
 
 	return (
 		<div className={style.Header}>
@@ -22,7 +24,8 @@ const Header = () => {
 					</div>
 				</div>
 			</Link>
-			<Search />
+			{location.pathname !== '/cart' && <Search />}
+
 			<div className={style.basket__button}>
 				<Link to='/cart'>
 					<button>

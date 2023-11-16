@@ -54,6 +54,7 @@ const CartItem = ({ id, title, image, price, type, size, count }) => {
 
 CartItem.propTypes = {
 	id: PropTypes.number,
+	totalPrice: PropTypes.number,
 	count: PropTypes.number,
 	title: PropTypes.string,
 	image: PropTypes.string,

@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types'
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 import { addItem } from '../../redux/slices/cartSlice'
 import style from '../../styles/global.module.scss'
 
@@ -42,7 +43,9 @@ const PizzaCard = ({ id, title, image, price, type, size }) => {
 	return (
 		<div className={style.pizza_block}>
 			<div className={style.pizza_card}>
-				<img src={image} alt={title} />
+				<Link to={`/pizza/${id}`}>
+					<img src={image} alt={title} />
+				</Link>
 				<p>{title}</p>
 				<div className={style.select_block}>
 					{type && type.length > 0 && (

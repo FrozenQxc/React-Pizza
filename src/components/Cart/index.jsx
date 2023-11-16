@@ -1,15 +1,13 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { clearItems } from '../../redux/slices/cartSlice.js'
+import { clearItems, selectCart } from '../../redux/slices/cartSlice.js'
 import style from '../../styles/_cart.module.scss'
 import CartEmpty from './CartEmpty.jsx'
 import CartItem from './CartItem'
 
 const Cart = () => {
-	const items = useSelector(state => state.cart.items)
-	const totalPrice = useSelector(state => state.cart.totalPrice)
+	const { items, totalPrice } = useSelector(selectCart)
 	const dispatch = useDispatch()
-
 	const totalCount = items.reduce((sum, item) => sum + item.count, 0)
 
 	const onClickClean = () => {
@@ -21,8 +19,6 @@ const Cart = () => {
 	if (!totalPrice) {
 		return <CartEmpty />
 	}
-
-	console.log(items)
 
 	return (
 		<div className={style.cart}>
@@ -39,10 +35,10 @@ const Cart = () => {
 
 			<div className={style.oplata}>
 				<div className={style.all__pizza}>
-					<p>
+					<div>
 						Всего пицц:
 						<h2>{totalCount} шт</h2>
-					</p>
+					</div>
 					<Link to='/'>
 						<button>Вернуться назад</button>
 					</Link>

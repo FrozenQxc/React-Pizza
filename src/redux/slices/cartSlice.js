@@ -34,7 +34,13 @@ const cartSlice = createSlice({
 		},
 
 		removeItem(state, action) {
-			state.items = state.items.filter(obj => obj.id !== action.payload)
+			const removedItemId = action.payload
+			const removedItem = state.items.find(obj => obj.id === removedItemId)
+
+			if (removedItem) {
+				state.items = state.items.filter(obj => obj.id !== removedItemId)
+				state.totalPrice -= removedItem.price * removedItem.count
+			}
 		},
 
 		clearItems(state) {
@@ -43,6 +49,8 @@ const cartSlice = createSlice({
 		},
 	},
 })
+
+export const selectCart = state => state.cart
 
 export const { addItem, clearItems, removeItem, minusItem } = cartSlice.actions
 
