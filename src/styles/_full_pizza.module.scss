@@ -1,0 +1,39 @@
+.pizza {
+	padding: 10px;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	height: 66vh;
+	padding: 10px;
+
+	.about {
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+
+		p {
+			align-items: center;
+			width: 800px;
+		}
+
+		span {
+			font-size: 35px;
+		}
+	}
+
+	img {
+		width: 500px;
+	}
+
+	.preview {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+		gap: 25px;
+
+		h2 {
+			font-size: 36px;
+		}
+	}
+}

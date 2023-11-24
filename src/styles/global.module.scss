@@ -105,6 +105,15 @@ button {
 		.pizza_block {
 			margin-top: 10px;
 
+			img {
+				width: 320px;
+			}
+
+			img:hover {
+				scale: 1.1;
+				padding: 10px;
+			}
+
 			.pizza_card {
 				padding: 15px;
 				margin: 10px;

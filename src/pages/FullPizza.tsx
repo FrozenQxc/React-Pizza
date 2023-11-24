@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import style from '../../src/styles/_full_pizza.module.scss'
 import Header from '../components/Header/Header'
 
 const FullPizza = () => {
@@ -37,17 +38,20 @@ const FullPizza = () => {
 	return (
 		<>
 			<Header />
-			<div>
-				<img src='' alt='' />
-				<h2>{pizza.title}</h2>
-				<img src={pizza.imgUrl} alt='' />
-				<p>
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore
-					dolores odit veritatis nemo vitae ab adipisci delectus voluptate quis
-					aperiam, voluptates ex nesciunt nam ullam natus, quod vel nulla?
-					Provident?
-				</p>
-				<h4>{pizza.price}</h4>
+			<div className={style.pizza}>
+				<div className={style.preview}>
+					<h2>{pizza.title}</h2>
+					<img src={pizza.imgUrl} alt='' />
+				</div>
+				<div className={style.about}>
+					<p>
+						Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore
+						dolores odit veritatis nemo vitae ab adipisci delectus voluptate
+						quis aperiam, voluptates ex nesciunt nam ullam natus, quod vel
+						nulla? Provident?
+					</p>
+					<span>Цена: {pizza.price} ₽ </span>
+				</div>
 			</div>
 		</>
 	)

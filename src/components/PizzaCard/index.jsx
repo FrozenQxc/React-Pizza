@@ -43,9 +43,12 @@ const PizzaCard = ({ id, title, image, price, type, size }) => {
 	return (
 		<div className={style.pizza_block}>
 			<div className={style.pizza_card}>
-				<Link to={`/pizza/${id}`}>
-					<img src={image} alt={title} />
-				</Link>
+				<div className={style.links}>
+					<Link to={`/pizza/${id}`}>
+						<img src={image} alt={title} />
+					</Link>
+				</div>
+
 				<p>{title}</p>
 				<div className={style.select_block}>
 					{type && type.length > 0 && (
