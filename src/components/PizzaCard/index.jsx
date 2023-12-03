@@ -8,13 +8,13 @@ import style from '../../styles/global.module.scss'
 const typeName = ['Тонкое', 'Традиционное']
 
 const PizzaCard = ({ id, title, image, price, type, size }) => {
+	const dispatch = useDispatch()
 	const [count, setCount] = useState(0)
 	const cartItem = useSelector(state =>
 		state.cart.items.find(obj => obj.id === id)
 	)
 	const [activeIndex, setActiveIndex] = useState(0)
 	const [activeSizeIndex, setActiveSizeIndex] = useState(0)
-	const dispatch = useDispatch()
 
 	const addedCount = cartItem ? cartItem.count : 0
 
@@ -79,9 +79,9 @@ const PizzaCard = ({ id, title, image, price, type, size }) => {
 					)}
 				</div>
 				<div className={style.add}>
-					<label htmlFor=''>{price} ₽</label>
+					<label>{activeSizeIndex === 2} ₽</label>
 					<button onClick={handleDecrement}>
-						Добавить {addedCount > 0 && <label htmlFor=''>{addedCount}</label>}
+						Добавить {addedCount > 0 && <label>{addedCount}</label>}
 					</button>
 				</div>
 			</div>
