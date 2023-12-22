@@ -25,7 +25,7 @@ const Header = () => {
         </div>
       </Link>
 
-      {location.pathname !== "/pizza/" && <Search />}
+      {location.pathname !== "/cart" && <Search />}
 
       <div className={style.basket__button}>
         <Link to="/cart">

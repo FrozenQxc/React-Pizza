@@ -1,150 +1,160 @@
 .cart {
-	padding: 66px 55px 10px 66px;
+  padding: 66px 55px 10px 66px;
 
-	.oplata {
-		display: flex;
-		justify-content: space-between;
-		padding: 55px;
+  .oplata {
+    display: flex;
+    justify-content: space-between;
+    padding: 55px;
 
-		.all__pizza {
-			display: flex;
-			align-items: center;
-			flex-direction: column;
-			gap: 35px;
+    .all__pizza {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      gap: 35px;
 
-			button {
-				padding: 20px;
-				border-radius: 30px;
-				color: rgba(128, 128, 128, 0.2);
+      button {
+        padding: 20px;
+        border-radius: 30px;
+        color: rgba(128, 128, 128, 0.2);
 
-				border: 1px solid rgba(128, 128, 128, 0.2);
-			}
-			button:hover {
-				color: rgba(128, 128, 128, 0.627);
+        border: 1px solid rgba(128, 128, 128, 0.2);
+      }
+      button:hover {
+        color: rgba(128, 128, 128, 0.627);
 
-				border: 1px solid rgba(128, 128, 128, 0.669);
-			}
+        border: 1px solid rgba(128, 128, 128, 0.669);
+      }
 
-			p {
-				display: flex;
-				align-items: center;
-				gap: 5px;
-				h2 {
-					font-size: 18px;
-				}
-			}
-		}
+      p {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        h2 {
+          font-size: 18px;
+        }
+      }
+    }
 
-		.summa {
-			display: flex;
-			align-items: center;
-			flex-direction: column;
-			gap: 35px;
+    .summa {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      gap: 35px;
 
-			button {
-				padding: 20px;
-				border-radius: 30px;
-				background-color: orange;
-				border: 1px solid orange;
-			}
-			button:hover {
-				color: white;
-			}
+      button {
+        border-radius: 30px;
+        background-color: orange;
+        border: 1px solid orange;
+        padding: 20px;
+      }
 
-			h1 {
-				display: flex;
-				gap: 5px;
-				font-size: 18px;
+      button:hover {
+        color: white;
+      }
 
-				p {
-					color: orange;
-					font-size: 17px;
-				}
-			}
-		}
-	}
-	.pizza {
-		display: flex;
-		padding: 25px 0px 25px 0px;
-		display: flex;
-		justify-content: space-between;
-		gap: 100px;
-		border-bottom: solid 1px rgba(218, 216, 216, 0.5);
+      h1 {
+        display: flex;
+        gap: 5px;
+        font-size: 18px;
 
-		.title {
-			align-items: center;
-			display: flex;
-			gap: 35px;
-		}
+        p {
+          color: orange;
+          font-size: 17px;
+        }
+      }
+    }
+  }
+  .pizza {
+    display: flex;
+    padding: 25px 0px 25px 0px;
+    display: flex;
+    justify-content: space-between;
+    gap: 100px;
+    border-bottom: solid 1px rgba(218, 216, 216, 0.5);
 
-		ul {
-			display: flex;
-			flex-direction: column;
-			justify-content: start;
-			gap: 5px;
+    .title {
+      align-items: center;
+      display: flex;
+      gap: 35px;
+    }
 
-			li {
-				font-size: 21px;
-			}
+    ul {
+      display: flex;
+      flex-direction: column;
+      justify-content: start;
+      gap: 5px;
 
-			p {
-				font-size: 14px;
-				color: gray;
-			}
-		}
+      li {
+        font-size: 21px;
+      }
 
-		.rubli {
-			display: flex;
-			align-items: center;
-			font-size: 22px;
-		}
+      p {
+        font-size: 14px;
+        color: gray;
+      }
+    }
 
-		._button {
-			display: flex;
-			align-items: center;
-			gap: 35px;
+    .rubli {
+      display: flex;
+      align-items: center;
+      font-size: 22px;
+    }
 
-			p {
-				font-size: 25px;
-			}
+    ._button {
+      display: flex;
+      align-items: center;
+      gap: 35px;
 
-			button {
-				border: solid 1px orange;
-				padding: 10px 15px 10px 15px;
+      p {
+        font-size: 25px;
+      }
 
-				border-radius: 55px;
-				font-size: 25px;
-			}
-			button:hover {
-				background-color: orange;
-			}
-		}
+      button {
+        color: coral;
+        width: 55px;
+        height: 55px;
+        border: solid 1px coral;
+        border-radius: 50%;
+        font-size: 25px;
+      }
 
-		img {
-			width: 75px;
-		}
-	}
+      button:disabled {
+        opacity: 0.4;
+        border-color: #787878;
+        color: #787878;
+      }
 
-	.Header {
-		display: flex;
-		justify-content: space-between;
-		padding-bottom: 10px;
-		border-bottom: solid 1px rgba(218, 216, 216, 0.5);
+      button:hover {
+        background-color: orange;
+        color: white;
+      }
+    }
 
-		.bucket {
-			display: flex;
-			flex-direction: row;
-			align-items: center;
+    img {
+      width: 75px;
+    }
+  }
 
-			p {
-				font-weight: 600;
-				font-size: 25px;
-				padding: 10px;
-			}
+  .Header {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 10px;
+    border-bottom: solid 1px rgba(218, 216, 216, 0.5);
 
-			img {
-				width: 45px;
-			}
-		}
-	}
+    .bucket {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      p {
+        font-weight: 600;
+        font-size: 25px;
+        padding: 10px;
+      }
+
+      img {
+        width: 45px;
+      }
+    }
+  }
 }

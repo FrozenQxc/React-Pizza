@@ -93,13 +93,7 @@ button {
 
   .content {
     display: flex;
-
     flex-wrap: wrap;
-    // display: grid;
-    // grid-template-columns: repeat(4, 1fr);
-    // grid-template-rows: repeat(1, 1fr);
-    // grid-column-gap: 11px;
-
     justify-content: space-between;
 
     .pizza_block {
@@ -119,6 +113,8 @@ button {
         margin: 10px;
 
         p {
+          font-weight: 700;
+          font-size: 22px;
           display: flex;
           justify-content: center;
         }
@@ -138,7 +134,7 @@ button {
           }
 
           button:hover {
-            background-color: #e88f8f;
+            background-color: #f4bb60;
           }
         }
 
