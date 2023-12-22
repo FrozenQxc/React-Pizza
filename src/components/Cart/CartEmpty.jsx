@@ -1,9 +1,15 @@
-const CartEmpty = () => {
-	return (
-		<div>
-			<h2>Корзина пуста</h2>
-		</div>
-	)
-}
+import style from "../../styles/global.module.scss";
 
-export default CartEmpty
+const CartEmpty = () => {
+  return (
+    <div className={style.emptyCart}>
+      <h2>Корзина пуста</h2>
+      <p>
+        Что бы добавить товар вернитесь на <a href="/">главную страницу</a>
+      </p>
+      <img src="/public/cat-spinning.gif"></img>
+    </div>
+  );
+};
+
+export default CartEmpty;

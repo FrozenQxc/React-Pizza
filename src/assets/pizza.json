@@ -1,47 +1,47 @@
 [
-	{
-		"id": 0,
-		"imgUrl": "https://sun9-80.userapi.com/impg/ri8rtWYkpTlL4khNuldDpDhu9pyE76CyHRwZng/XWgqH7im8Go.jpg?size=292x292&quality=96&sign=94eadfbf570e8426298d8e4a06ad2389&type=album",
-		"title": "Пепперони фреш",
-		"price": 422,
-		"category": 2,
-		"type": [0],
-		"size": [21, 40]
-	},
-	{
-		"id": 1,
-		"imgUrl": "https://dodopizza-a.akamaihd.net/static/Img/Products/18dbb12240b041a191c9dc73c9c1f4ef_292x292.webp",
-		"title": "Пепперони",
-		"price": 123,
-		"type": [0, 1],
-		"size": [26, 30, 40],
-		"category": 3
-	},
-	{
-		"id": 3,
-		"imgUrl": "https://dodopizza-a.akamaihd.net/static/Img/Products/18dbb12240b041a191c9dc73c9c1f4ef_292x292.webp",
-		"title": "Пепперони фреш",
-		"price": 512,
-		"size": [26, 30, 40],
-		"type": [0, 1],
-		"category": 4
-	},
-	{
-		"id": 4,
-		"type": [0, 1],
-		"size": [30, 40],
-		"imgUrl": "https://dodopizza-a.akamaihd.net/static/Img/Products/18dbb12240b041a191c9dc73c9c1f4ef_292x292.webp",
-		"title": "Пепперони фреш",
-		"price": 555,
-		"category": 5
-	},
-	{
-		"id": 5,
-		"type": [0, 1],
-		"size": [30, 40],
-		"imgUrl": "https://dodopizza-a.akamaihd.net/static/Img/Products/748949429e25404ea10aab002c910d84_292x292.webp",
-		"title": "Маргарита",
-		"price": 228,
-		"category": 5
-	}
+  {
+    "id": 0,
+    "imgUrl": "https://sun9-80.userapi.com/impg/ri8rtWYkpTlL4khNuldDpDhu9pyE76CyHRwZng/XWgqH7im8Go.jpg?size=292x292&quality=96&sign=94eadfbf570e8426298d8e4a06ad2389&type=album",
+    "title": "Пепперони фреш",
+    "price": 422,
+    "category": 2,
+    "type": [0],
+    "size": [21, 40]
+  },
+  {
+    "id": 1,
+    "imgUrl": "https://dodopizza-a.akamaihd.net/static/Img/Products/18dbb12240b041a191c9dc73c9c1f4ef_292x292.webp",
+    "title": "Пепперони",
+    "price": 123,
+    "type": [0, 1],
+    "size": [26, 30, 40],
+    "category": 3
+  },
+  {
+    "id": 3,
+    "imgUrl": "https://dodopizza-a.akamaihd.net/static/Img/Products/18dbb12240b041a191c9dc73c9c1f4ef_292x292.webp",
+    "title": "Пепперони фреш",
+    "price": 512,
+    "size": [26, 30, 40],
+    "type": [0, 1],
+    "category": 4
+  },
+  {
+    "id": 4,
+    "type": [0, 1],
+    "size": [30, 40],
+    "imgUrl": "https://dodopizza-a.akamaihd.net/static/Img/Products/18dbb12240b041a191c9dc73c9c1f4ef_292x292.webp",
+    "title": "Пепперони фреш",
+    "price": 555,
+    "category": 5
+  },
+  {
+    "id": 5,
+    "type": [0, 1],
+    "size": [30, 40],
+    "imgUrl": "https://dodopizza-a.akamaihd.net/static/Img/Products/748949429e25404ea10aab002c910d84_292x292.webp",
+    "title": "Маргарита",
+    "price": 228,
+    "category": 5
+  }
 ]
