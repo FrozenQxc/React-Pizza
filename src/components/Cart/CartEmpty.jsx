@@ -7,7 +7,7 @@ const CartEmpty = () => {
       <p>
         Что бы добавить товар вернитесь на <a href="/">главную страницу</a>
       </p>
-      <img src="/public/cat-spinning.gif"></img>
+      <img src="cat-spinning.gif"></img>
     </div>
   );
 };
